@@ -35,7 +35,7 @@
   "devDependencies": {
     "nodemon": "^1.12.1"
   },
-  "main": "app.js",
+  "master": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saraewilcox/lisbon-street-art.git"
