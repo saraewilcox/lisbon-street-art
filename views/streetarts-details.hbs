@@ -1,0 +1,46 @@
+<div class="container">
+  <br>
+  <h1 class="details-title">{{streetart.name_description}}</h1>
+  <p><img src={{streetart.imageUrl}} class="graffiti" alt={{streetart.name_description}}>
+    <hr>
+
+  <p>Art by: {{streetart.artist}}</p>
+  <p>Summary: {{streetart.name_description}}</p>
+  <p>Address: {{streetart.address}}</p>
+  <p>Latitude: {{streetart.latitude}}</p>
+  <p>Longitude: {{streetart.longitude}}</p>
+  <p>Other Location Notes: {{streetart.other_location_note}}</p>
+  <p>Comment: {{streetart.comment}}</p>
+  <hr>
+  <p>Have you seen it? Add your review:</p>
+  <form action="/reviews/{{streetart._id}}/add" method="POST">
+    <label>
+      User
+      <input type="text" name="user">
+    </label>
+
+    <label>
+      Comment
+      <input type="text" name="comment">
+    </label>
+    <button type="submit">Add Comment</button>
+  </form>
+  {{!-- use each bc reviews are in an array: --}}
+  {{#each streetart.reviews}}
+  <div>
+    <p>{{this.comment}} - {{this.user}}</p>
+  </div>
+  {{/each}}
+  <br>
+  <a href="/route-search">Back to route map</a>
+  <br>
+  <a href="/streetarts">List of all street art</a>
+  <br>
+</div>
+<footer id="footer-signedin" class="footer fixed-bottom">
+  <span>
+    <form action="/logout" method="POST">
+      <button class="logout-button" type="submit">Sign Out</button>
+    </form>
+  </span>
+</footer>

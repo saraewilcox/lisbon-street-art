@@ -1,0 +1,307 @@
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    {{title}}
+  </a>
+</nav>
+
+
+<div id="map"></div>
+<div>
+  <form id="routeSearchForm" action="/route-search" method="POST">
+    <label for="start">
+      <input type="text" id="start" name="start" placeholder="starting point">
+    </label>
+    <label for="end">
+      <input type="text" id="end" name="end" placeholder="destination">
+    </label>
+    <button class="btn btn-primary btn-sm" id="add-route">Add route</button>
+    <button class="btn btn-primary btn-sm" id="clear-route">Clear route</button>
+    <button class="btn btn-primary btn-sm" id="clear-markers">Clear markers</button>
+    <button class="btn btn-primary btn-sm" id="get-current-location">Get current location</button>
+    <button class="btn btn-primary btn-sm" type="submit" id="show-street-art">Show Street Art</button>
+    <div class="save-favorites">
+      <label>
+        <p>Save route to favorites:
+          <input class="updates" type="text" name="favoriteName" required>
+        </p>
+      </label>
+      <button class="btn btn-secondary btn-sm" type="submit" id="save-route">Save to favorites</button>
+      <a href="/streetarts">List of street
+        art</a>
+      <a href="/streetarts/create">Create
+        a new street art point</a>
+    </div>
+  </form>
+</div>
+
+<div class="btn-group-toggle" data-toggle="buttons">
+  <form action="#" id="placesForm" method="GET">
+    <input type="checkbox" id="restaurants" name="restaurants">
+    <label class="btn btn-primary active" for="restaurants">Restaurants</label>
+    <input type="checkbox" id="bars" name="bars">
+    <label class="btn btn-primary active" for="bars">Bars</label>
+    <input type="checkbox" id="bakeries" name="bakeries">
+    <label class="btn btn-primary active" for="bakeries">Bakeries</label>
+    <input type="checkbox" id="supermarket" name="supermarkets">
+    <label class="btn btn-primary active" for="supermarket">Supermarket</label>
+    <input type="checkbox" id="tourist_attraction" name="touristAttractions">
+    <label class="btn btn-primary active" for="tourist_attraction">Viewpoints</label>
+    <input type="checkbox" id="art_gallery" name="artGalleries">
+    <label class="btn btn-primary active" for="art_gallery">Art Gallery</label>
+    <button class="btn btn-primary btn-md" id="search-places" type="submit">Search Places</button>
+  </form>
+</div>
+</div>
+
+<div>
+  {{#each favorites}}
+  <div class="col-sm-4">
+    <div class="card" style="width: 14rem;">
+      <div class="card-body">
+        <h6 class="card-title">{{favoriteName}}</h6>
+        <p>{{start}}</p>
+        <p> {{end}}</p>
+        <form action="/route-search/{{_id}}" method="POST">
+          <button class="btn btn-secondary btn-sm" type="submit" id="delete-route">Delete favorite </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<footer id="footer-signedin" class="footer fixed-bottom">
+  <span>
+    <form action="/logout" method="POST">
+      <button class="logout-button" type="submit">Sign Out</button>
+    </form>
+  </span>
+</footer>
+
+
+<script>
+  let markers = [];
+  let markerStreetartarray = [];
+  let routeDestinationCoordinates;
+  let directionsService;
+  let directionsRenderer;
+
+
+  function searchPlaces(event) {
+
+    let restaurant = event.path[0][0];
+    let bar = event.path[0][1];
+    let bakeries = event.path[0][2];
+    let supermarket = event.path[0][3];
+    let touristAttraction = event.path[0][4];
+    let artGallery = event.path[0][5];
+
+    let checkedTypes = [];
+    if (restaurant.checked) {
+      // console.log(restaurant.checked)
+      checkedTypes.push('restaurant')
+    } else if (bar.checked) {
+      checkedTypes.push('bar')
+    } else if (bakeries.checked) {
+      checkedTypes.push('bakery')
+    } else if (supermarket.checked) {
+      checkedTypes.push('supermarket')
+    } else if (tourist_attraction.checked) {
+      checkedTypes.push('tourist_attraction')
+    } else if (art_gallery.checked) {
+      checkedTypes.push('art_gallery')
+    } else {
+      clearMarkers();
+    }
+
+    if (!checkedTypes.length) {
+      alert('Please select one option')
+    } else {
+      let request = {
+        location: routeDestinationCoordinates,
+        radius: "150",
+        type: checkedTypes
+      };
+      let service = new google.maps.places.PlacesService(map)
+
+      service.nearbySearch(request, (results, status) => {
+
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (let i = 0; i < results.length; i++) {
+            let name = results[i].name
+            let lat = results[i].geometry.location.lat();
+            let lng = results[i].geometry.location.lng();
+            setMarker({ lat, lng }, name)
+            map.setCenter(routeDestinationCoordinates);
+            map.setZoom(17);
+          };
+        };
+      });
+
+    }
+  };
+
+  let streetarts = [];
+  function getstreetart() {
+
+    return axios.get('/api/all').then((results) => {
+      streetarts = results.data.results;
+
+    })
+  }
+
+  function showartmarkers() {
+    event.preventDefault()
+    getstreetart().then(() => {
+      streetarts.forEach((element) => {
+        const image = {
+          url: (element.imageUrl), size: new google.maps.Size(70, 70), scaledSize: new google.maps.Size(70, 70), origin: new google.maps.Point(0, 0), anchor: new google.maps.Point(0, 32),
+        };
+        const markerStreetart = new google.maps.Marker({
+          position: new google.maps.LatLng(Number(element.lat), Number(element.lng)),
+          map: map,
+          icon: image,
+          animation: google.maps.Animation.DROP
+        });
+        let contentString =
+          `<a href=/streetarts/${element.id}> 
+				<div class='info__container'>
+					<div class='info__text'>
+            <img width=200 height=150 src = ${element.imageUrl} >	
+						<h3 class='info__text__title'>${element.name_description}</h3> 
+						<h5 class='info__text__subtitle'>${element.artist}</h5>
+					</div>
+				</div></a>`
+
+        //console.log(element)
+        //streetarts.push(markerStreetart);
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 250,
+        });
+        map.setZoom(13);
+        markerStreetart.addListener("click", () => {
+          infowindow.open(map, markerStreetart);
+        });
+        markerStreetartarray.push(markerStreetart)
+      })
+      //console.log(markerStreetartarray)
+    })
+
+  }
+
+
+  function calcRoute(event) {
+    event.preventDefault();
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    //let start = "Santa Apolónia, Lisboa";
+    // let end = "Rato, Lisboa";
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let request = {
+      origin: start,
+      destination: end,
+      travelMode: "WALKING"
+    };
+    directionsService.route(request, (result, status) => {
+      if (status === "OK") {
+        routeDestinationCoordinates = {
+          lat: result.routes[0].legs[0].end_location.lat(),
+          lng: result.routes[0].legs[0].end_location.lng(),
+        }
+
+        directionsRenderer.setDirections(result);
+
+      }
+      //  console.log(result)
+    })
+    directionsRenderer.setMap(map);
+  }
+
+
+  function showMarkers(markers) { // Markers will be an array of objects with {lat, lgn }
+    markers.forEach((marker) => {
+      setMarker(marker);
+    });
+  }
+
+  function setMarker(marker, name) {
+    // console.log('marker', marker);
+    let customMarker = new google.maps.Marker({
+      position: marker,
+      map: map,
+      animation: google.maps.Animation.DROP
+    });
+    const infowindow = new google.maps.InfoWindow({
+      content: name,
+    });
+    customMarker.addListener("click", () => {
+      infowindow.open(map, customMarker);
+    });
+    markers.push(customMarker)
+  }
+
+
+  function getCurrentLocation(event) { // Geolocation 
+    event.preventDefault()
+    navigator.geolocation.getCurrentPosition((position) => {
+      const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      setMarker(pos);
+      map.setCenter(pos);
+      map.setZoom(13);
+    });
+  }
+
+  document.getElementById('add-route').addEventListener('click', (event) => {
+    calcRoute(event)
+  })
+  document.getElementById('clear-route').addEventListener('click', (event) => {
+    clearRoute(event)
+  })
+  document.getElementById('clear-markers').addEventListener('click', (event) => {
+    clearMarkers(event)
+  })
+  document.getElementById('get-current-location').addEventListener('click', (event) => {
+    getCurrentLocation(event)
+  })
+  document.getElementById('show-street-art').addEventListener('click', (event) => {
+    showartmarkers(event)
+  })
+
+
+  document.getElementById('placesForm').addEventListener('submit', (event) => {
+    event.preventDefault();
+    searchPlaces(event);
+  })
+
+  // Sets the map on all markers in the array.
+  function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+
+
+    markerStreetartarray.forEach((markerStreetart) => {
+      markerStreetart.setMap(map)
+    })
+  }
+
+  function clearMarkers(event) {
+    event.preventDefault()
+    setMapOnAll(null);
+  }
+
+
+
+  function clearRoute() {
+    event.preventDefault();
+    // Clear past routes
+    directionsRenderer.setMap(null)
+    document.getElementById('start').value = ''
+    document.getElementById('end').value = ''
+  }
+
+</script>

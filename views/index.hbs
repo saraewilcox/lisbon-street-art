@@ -1,0 +1,37 @@
+<link rel="stylesheet" href='/stylesheets/style.css' />
+<video autoplay loop muted id="background">
+  <source src="https://res.cloudinary.com/dt9z4xs6m/video/upload/v1605824975/movie/lisbon_uqch1o.mp4" type="video/mp4">
+</video>
+
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    {{title}}
+  </a>
+</nav>
+
+{{#if user}}
+<div class="login-signup-home-text">
+  <p>Welcome back, {{user.username}}</p>
+  <button class="btn btn-success"><a href="/route-search">Explore Lisbon</a>
+</div>
+<footer id="footer-signedin" class="footer fixed-bottom">
+  <span>
+    <form action="/logout" method="POST">
+      <button class="logout-button" type="submit">Sign Out</button>
+    </form>
+  </span>
+</footer>
+
+{{else}}
+<div class="login-signup-home">
+  <h1>Plan a Walking Tour of </br>Lisbon, Portugal</h1>
+  <button class="btn btn-success"> <a href="/login">Log In</a></button>
+  <button class="btn btn-info"><a href="/signup" id="signup">Sign Up</a></button>
+</div>
+
+<footer id="footer-home" class="footer fixed-bottom">
+  <span> Lisbon Street Art
+    <br> Copyright © 2020 Ironhack
+  </span>
+</footer>
+{{/if}}

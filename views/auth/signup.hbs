@@ -1,0 +1,36 @@
+<link rel="stylesheet" href='/stylesheets/style.css' />
+<video autoplay loop muted id="background">
+  <source src="https://res.cloudinary.com/dt9z4xs6m/video/upload/v1605824975/movie/lisbon_uqch1o.mp4" type="video/mp4">
+</video>
+
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    {{title}}
+  </a>
+</nav>
+<div class="box">
+  <h2>Sign Up</h2>
+  <form action="/signup" method="POST">
+    <div class="inputBox">
+      <input type="text" name="username" placeholder="Enter Username">
+      <label>Username</label>
+    </div>
+    <div class=" inputBox">
+      <input type="text" name="email" placeholder="Enter Email">
+      <label>Email</label>
+    </div>
+    <div class=" inputBox">
+      <input type="password" name="password" placeholder="··········">
+      <label>Password</label>
+    </div>
+    <button id="input-style">Create account</button>
+    {{#if errorMessage}}
+    <div class="error">{{errorMessage}}</div>
+    {{/if}}
+  </form>
+</div>
+<footer id="footer-home" class="footer fixed-bottom">
+  <span> Lisbon Street Art
+    <br> Copyright © 2020 Ironhack
+  </span>
+</footer>

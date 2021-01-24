@@ -1,0 +1,31 @@
+<div class="container">
+  <br>
+  <h1 class="details-title">Lisbon's Best Street Art</h1>
+  <div class="row">
+    {{#each streetarts}}
+    <div class="col-sm-4">
+      <div class="card" style="width: 22rem;">
+        <img src={{imageUrl}} class="card-img-top" alt={{title}}>
+        <div class="card-body">
+          <h5 class="card-title">{{name_description}}</h5>
+          <p>by: {{artist}}</p>
+          <a href="/streetarts/{{_id}}">See details</a>
+          <a href="/streetarts/{{_id}}/edit" id="card-body-edit">Edit</a>
+          <form action="/streetarts/{{_id}}/delete" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <br>
+  <a href="/route-search">Back to route map</a>
+</div>
+<footer id="footer-signedin" class="footer fixed-bottom">
+  <span>
+    <form action="/logout" method="POST">
+      <button class="logout-button" type="submit">Sign Out</button>
+    </form>
+  </span>
+</footer>
