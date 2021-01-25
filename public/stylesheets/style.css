@@ -8,7 +8,7 @@ a {
   justify-content: left;
   text-align: center;
   vertical-align: middle;
-  background-image: url("/images/Graffiti-Background.jpg");
+  background-image: url("https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg");
   text-shadow: -1px -1px #fff; }
 
 #map {
@@ -38,7 +38,7 @@ a {
 
 #show-street-art {
   position: relative;
-  background: url(/images/Graffiti-Background.jpg) no-repeat center right;
+  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   margin-left: 10px; }
 
 #search-places-btn {
@@ -80,7 +80,8 @@ a {
   display: flex;
   justify-content: center;
   margin-bottom: 37px;
-  margin-top: -20px; }
+  margin-top: 35px;
+  color: white; }
 
 .graffiti {
   width: 60vw;
@@ -160,14 +161,29 @@ a {
 .fluid-container .form {
   display: flex; }
 
+.fluid-container-edit .form {
+  left: 50%;
+  top: 50%;
+  margin-left: -25%;
+  position: absolute;
+  margin-top: -25%; }
+
+.fluid-container-edit {
+  margin-top: 100px;
+  display: block;
+  text-align: center;
+  justify-content: center;
+  width: 65%;
+  margin-left: 75px; }
+
 .menu-content {
   flex: 1; }
 
 .update-button {
   box-shadow: inset 0px 1px 0px 0px #a4e271;
-  background: url(/images/Graffiti-Background.jpg) no-repeat center right;
+  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   border-radius: 6px;
-  border: 1px solid #74b807;
+  border: 5px solid #74b807;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -176,19 +192,21 @@ a {
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528009; }
+  text-shadow: 0px 1px 0px #528009;
+  margin-left: 150px; }
 
 .create-button {
   box-shadow: 0px 0px 0px 2px #3dc21b;
-  background: url(/images/Graffiti-Background.jpg) no-repeat center right;
+  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   border-radius: 10px;
-  border: 1px solid #18ab29;
+  border: 3px solid #18ab29;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
   font-family: Arial;
-  font-size: 19px;
-  padding: 12px 37px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #2f6627;
   text-align: center; }
@@ -294,8 +312,35 @@ a {
 a:link#card-body-edit {
   padding-left: 95px; }
 
+#card-body-edit {
+  margin-left: 38px; }
+
 .container {
-  margin-bottom: 40px; }
+  margin-bottom: 30px;
+  margin-top: -40px; }
+
+.container-create {
+  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-left: 100px; }
+
+.container-create h1 {
+  margin-left: 75px; }
+
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.25; }
+
+#bg-list {
+  width: 200px;
+  height: 100px;
+  border: 1px solid orange;
+  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) center center;
+  background-size: cover; }
 
 #streetart-edit {
   float: left;
@@ -330,6 +375,41 @@ form.no-tables-create > div > div > label > input {
   color: white; }
 
 .streetart-create {
-  float: left; }
+  float: left;
+  margin-left: 50px;
+  margin-top: 48px; }
+
+.btn-group-toggle {
+  width: 70%;
+  margin-left: 250px; }
+
+#list-delete {
+  margin-top: -37px;
+  padding-bottom: 10px;
+  text-align: right; }
+
+#edit-links {
+  margin-top: 40px;
+  margin-left: 5px; }
+
+#edit-links-link {
+  margin-top: 5px;
+  margin-left: 5px; }
+
+#edit-links-create {
+  margin-top: 5px;
+  margin-left: -80px; }
+
+#create-links {
+  margin-top: 100px;
+  margin-left: -80px;
+  margin-top: 140px; }
+
+.menu-text {
+  margin-left: 200px; }
+
+#street-list-link {
+  margin-left: -125px;
+  margin-bottom: 5px; }
 
 /*# sourceMappingURL=style.css.map */

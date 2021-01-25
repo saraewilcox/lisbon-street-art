@@ -1,6 +1,12 @@
-<div class="streetart-create">
+<nav class="navbar fixed-top navbar-light bg-light">
+  <a class="navbar-brand" href="/route-search">
+    {{title}}
+  </a>
+</nav>
+
+<div class="container-create">
   <h1>Located great street art? Add it here! </h1>
-  <div class="container">
+  <div class="streetart-create">
     <form class="no-tables-create" action="/streetarts/create" method="POST">
       <div class="col-10">
         <div class="form-group row ml-10">
@@ -44,9 +50,11 @@
 
 
 <br>
-<a href="/route-search">Back to route map</a>
+<input id="create-links" class="btn btn-secondary" type=button onClick="location.href='/route-search'"
+  value='Back to route map'>
 <br>
-<a href="/streetarts">List of all street art</a>
+<input id="edit-links-create" class="btn btn-secondary" type=button onClick="location.href='/streetarts'"
+  value='List of all street art'>
 </div>
 <footer id="footer-signedin" class="footer fixed-bottom">
   <span>

@@ -45,7 +45,7 @@ router.post('/signup', (req, res) => {
 
     User.create({ username, email, password: hashPassword }) //be sure you're not saving their real password! this is password equal to hashPassword.
       .then(() => {
-        res.redirect('/');
+        res.redirect('/login');
       })
       .catch((error) => {
         if(error.code === 11000 ) {

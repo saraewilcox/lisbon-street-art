@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -11,7 +13,7 @@ const bcrypt = require('bcryptjs');
 const helpers      = require('handlebars-helpers');
 const session      = require('express-session');
 const MongoStore   = require('connect-mongo')(session);
-const port = process.env.PORT || 3001
+
 
 
 
@@ -74,20 +76,18 @@ app.use(
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public', 'images')));
-app.use('/streetarts', express.static(path.join(__dirname, 'public/images')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 
 // default value for title local
-app.locals.title = 'Lisbon Street Art & Tourist App';
+app.locals.title = 'Lisbon Street Art';
 app.locals.gmapKey = process.env.GOOGLE_MAPS_API_KEY;
 
 const index = require('./routes/index');
 app.use('/', index);
 
-//////////////11.11 cyber security stuff///////////////////////
+
 const auth = require('./routes/auth');
 app.use('/', auth);
 
@@ -100,9 +100,5 @@ app.use('/', streetart);
 
 const api = require('./routes/api');
 app.use('/', api);
-
-
-
-app.listen(port, () => console.log('server started on ', port));
 
 module.exports = app;
