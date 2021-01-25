@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Streetart = require('../models/Streetart.js');
 
-mongoose.connect(`${process.env.MONGODB_DB}`, {
+mongoose.connect(`${process.env.MONGODB}`, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
