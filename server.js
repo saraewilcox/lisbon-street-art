@@ -1,12 +1,7 @@
-const express = require( 'express' );
+const app = require('./app');
 
-// create express application
-const app = express();
-
-
-
-// listen on a port
 const port = process.env.PORT || 8080;
-app.listen( port, () => {
-    console.log( `Server started on port ${ port }.` );
-} );
+
+app.listen(port, () => {
+    console.log(`App is running at port ${port}`);
+});
