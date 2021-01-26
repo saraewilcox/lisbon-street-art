@@ -76,16 +76,6 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// app.use((req, res, next) => {
-//   const err = new Error("Page Not found");
-//   err.status = 404;
-//   next(err);
-// });
-
-// app.use((err, req, res, next) => {
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
 
 // default value for title local
 app.locals.title = 'Lisbon Street Art';
