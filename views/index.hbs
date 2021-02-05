@@ -1,3 +1,4 @@
+<script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js"></script>
 <link rel="stylesheet" href='/stylesheets/style.css' />
 <video autoplay loop muted id="background">
   <source src="https://res.cloudinary.com/dt9z4xs6m/video/upload/v1605824975/movie/lisbon_uqch1o.mp4" type="video/mp4">
@@ -16,8 +17,11 @@
 </div>
 <footer id="footer-signedin" class="footer fixed-bottom">
   <span>
-    <form action="/logout" method="POST">
+    {{!-- <form action="/logout" method="POST">
       <button class="logout-button" type="submit">Sign Out</button>
+    </form> --}}
+    <form action="/logout" method="POST">
+      <button class="logout-button" type="submit"><i class="fas fa-sign-out-alt"></i></button>
     </form>
   </span>
 </footer>
