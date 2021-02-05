@@ -12,7 +12,7 @@ a {
   text-shadow: -1px -1px #fff; }
 
 #map {
-  height: 500px;
+  height: 425px;
   width: 98%;
   display: block;
   margin-top: 65px;
@@ -381,8 +381,13 @@ form.no-tables-create > div > div > label > input {
   margin-top: 48px; }
 
 .btn-group-toggle {
-  width: 70%;
-  margin-left: 250px; }
+  width: 80%;
+  margin-left: 225px; }
+
+.btn-group-toggle-select {
+  width: 80%;
+  margin-left: 225px;
+  margin-bottom: 50px; }
 
 #list-delete {
   margin-top: -37px;
@@ -395,7 +400,8 @@ form.no-tables-create > div > div > label > input {
 
 #edit-links-link {
   margin-top: 5px;
-  margin-left: 5px; }
+  margin-left: 5px;
+  margin-bottom: 35px; }
 
 #edit-links-create {
   margin-top: 5px;
@@ -410,7 +416,7 @@ form.no-tables-create > div > div > label > input {
   margin-left: 200px; }
 
 #street-list-link {
-  margin-left: -125px;
+  margin-left: -75px;
   margin-bottom: 5px; }
 
 /*# sourceMappingURL=style.css.map */
