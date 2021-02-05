@@ -172,7 +172,7 @@ a {
   text-align: center;
   justify-content: center;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-size: 15px;
 }
 
@@ -215,10 +215,10 @@ a {
  }
 
 .create-button {
-  box-shadow: 0px 0px 0px 2px #3dc21b;
+  box-shadow: 0px 0px 0px 2px #c21bba;
   background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   border-radius: 10px;
-  border: 3px solid #18ab29;
+  border: 3px solid #8118ab;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -227,7 +227,6 @@ a {
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627; 
   text-align: center
 }
 
@@ -446,11 +445,11 @@ form.no-tables-create > div > div > label > input {
 
 #edit-links {
   margin-bottom: 10px;
+  margin-left: -80px;
 }
+
 #edit-links-link {
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 #details-links {
