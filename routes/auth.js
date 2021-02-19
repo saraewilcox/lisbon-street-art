@@ -23,7 +23,7 @@ router.post('/signup', (req, res) => {
   }
 
   //regular expression validation - regExr.com to build expressions on checking if email addresses are valid. stackexchange had one.
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  const regex = /(?=.*[a-z]).{5,}/;
   if (!regex.test(password)) {
     res.render('auth/signup', 
     {

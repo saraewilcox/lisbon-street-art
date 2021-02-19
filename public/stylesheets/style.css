@@ -12,7 +12,7 @@ a {
   text-shadow: -1px -1px #fff; }
 
 #map {
-  height: 425px;
+  height: 445px;
   width: 98%;
   display: block;
   margin-top: 65px;
@@ -20,9 +20,10 @@ a {
   margin-bottom: 10px; }
 
 .save-favorites {
-  margin-top: 10px;
+  margin-top: 8px;
   justify-content: center;
-  bottom: 13vw; }
+  margin-left: 150px;
+  margin-bottom: 12px; }
 
 .map-routes {
   position: relative;
@@ -44,7 +45,8 @@ a {
 #search-places-btn {
   position: relative;
   left: 20px;
-  bottom: 4px; }
+  bottom: 4px;
+  border: 1px; }
 
 #save-favorite {
   margin-top: 0px;
@@ -62,7 +64,8 @@ a {
 
 #search-places {
   margin-left: 10px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  border: 1px; }
 
 .save-favorites a:link {
   margin-left: 20px; }
@@ -155,7 +158,7 @@ a {
   text-align: center;
   justify-content: center;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   font-size: 15px; }
 
 .fluid-container .form {
@@ -180,10 +183,10 @@ a {
   flex: 1; }
 
 .update-button {
-  box-shadow: inset 0px 1px 0px 0px #a4e271;
+  box-shadow: inset 0px 1px 0px 0px #71a6e2;
   background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   border-radius: 6px;
-  border: 5px solid #74b807;
+  border: 5px solid #078fb8;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -192,14 +195,13 @@ a {
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #528009;
   margin-left: 150px; }
 
 .create-button {
-  box-shadow: 0px 0px 0px 2px #3dc21b;
+  box-shadow: 0px 0px 0px 2px #c21bba;
   background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
   border-radius: 10px;
-  border: 3px solid #18ab29;
+  border: 3px solid #8118ab;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -208,7 +210,6 @@ a {
   font-weight: bold;
   padding: 6px 24px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #2f6627;
   text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
@@ -387,7 +388,7 @@ form.no-tables-create > div > div > label > input {
 .btn-group-toggle-select {
   width: 80%;
   margin-left: 225px;
-  margin-bottom: 50px; }
+  margin-bottom: 10px; }
 
 #list-delete {
   margin-top: -37px;
@@ -395,22 +396,23 @@ form.no-tables-create > div > div > label > input {
   text-align: right; }
 
 #edit-links {
-  margin-top: 40px;
-  margin-left: 5px; }
+  margin-bottom: 10px;
+  margin-left: 20px; }
 
 #edit-links-link {
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-bottom: 35px; }
+  margin-bottom: 10px; }
 
-#edit-links-create {
-  margin-top: 5px;
-  margin-left: -80px; }
+#details-links {
+  margin-bottom: 10px; }
 
 #create-links {
-  margin-top: 100px;
-  margin-left: -80px;
-  margin-top: 140px; }
+  margin-top: 80px;
+  margin-bottom: 10px;
+  margin-left: 10px; }
+
+#create-links-link {
+  margin-top: 80px;
+  margin-bottom: 10px; }
 
 .menu-text {
   margin-left: 200px; }
