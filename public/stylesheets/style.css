@@ -11,11 +11,14 @@ a {
   background-image: url("https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg");
   text-shadow: -1px -1px #fff; }
 
+#route-wrapper {
+  background-color: #d0d5da; }
+
 #map {
   height: 445px;
   width: 98%;
   display: block;
-  margin-top: 65px;
+  margin-top: 58px;
   width: auto;
   margin-bottom: 10px; }
 
@@ -39,7 +42,7 @@ a {
 
 #show-street-art {
   position: relative;
-  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605855067/Graffiti-Background_ip7qjf.jpg) no-repeat center right;
+  background: url(https://res.cloudinary.com/dt9z4xs6m/image/upload/v1605712722/village-underground_zova5i.jpg) no-repeat center top;
   margin-left: 10px; }
 
 #search-places-btn {
@@ -150,14 +153,14 @@ a {
   opacity: 0.8;
   color: red;
   height: 30px;
-  padding-top: 5px;
+  padding-top: 2px;
   padding-bottom: 10px;
   text-align: center; }
 
 #footer-signedin a:link {
   text-align: center;
   justify-content: center;
-  padding-top: 5px;
+  padding-top: 2px;
   padding-bottom: 10px;
   font-size: 15px; }
 

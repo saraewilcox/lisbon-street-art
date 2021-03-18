@@ -4,7 +4,7 @@
   </a>
 </nav>
 
-
+<div id="route-wrapper">
 <div id="map"></div>
 <div class="btn-group-toggle">
   <form id="routeSearchForm" action="/route-search" method="POST">
@@ -26,7 +26,7 @@
         </p>
       </label>
       <button class="btn btn-secondary btn-sm" type="submit" id="save-route">Save to favorites</button> --}}
-      <button class="btn btn-primary btn-sm" type="submit" id="show-street-art">Show Street Art</button>
+      <button class="btn btn-primary btn-md" type="submit" id="show-street-art">Show Street Art</button>
       <a href="/streetarts">List of street
         art</a>
       <a href="/streetarts/create">Create
@@ -69,6 +69,7 @@
     </div>
   </div>
   {{/each}}
+</div>
 </div>
 <footer id="footer-signedin" class="footer fixed-bottom">
   <span>
